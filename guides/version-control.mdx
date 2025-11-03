@@ -1,0 +1,90 @@
+---
+title: "Version Control"
+description: "Manage workflow versions and drafts"
+---
+
+RetroFix's version control system lets you safely iterate on workflows, test changes, and roll back if needed.
+
+---
+
+## Overview
+
+Version control helps you:
+- Save different versions of your workflow
+- Test changes safely
+- Roll back to previous versions
+- Control which version runs in production
+
+### Key Concepts
+
+- **Version** - A published snapshot of your workflow
+- **Draft** - Unsaved changes to the current version
+- **Published Version** - The version currently active and running
+
+---
+
+## Publishing Changes
+
+### Create a Version
+
+Click the **Publish** button to save the current workflow state as a new version.
+
+### What Gets Published
+
+- All workflow steps and configuration
+- Trigger setup
+- Action parameters
+- Loops, conditionals, and branching
+- Step locks and disabled steps
+
+---
+
+## Switching Versions
+
+### View All Versions
+
+Open the version history to see all published versions of your workflow by clicking "View History"
+
+- **Timestamps** - See when each version was created
+- **Changes** - View what changed between versions
+- **Revert** - Go back to any previous version
+
+### Activate a Different Version
+
+Switch between versions to control which one runs:
+
+1. Open version history
+2. Select the version you want to use
+3. Click "Restore Version"
+
+<Warning>
+Selecting an old version from "View History" sets it as your current workflow draft. You must re-publish it (with any changes or as-is) for it to be used in active runs.
+</Warning>
+
+---
+
+## Draft Management
+
+### Understanding Drafts
+
+A "Draft" is any unsaved changes you've made since the last publish.
+
+- **Only in your editor** - Drafts don't affect live workflows
+- **Visible in version history** - Shown as "Draft" or "Unsaved Changes"
+- **Safe to experiment** - Test anything without affecting production
+
+### Testing Drafts
+
+When manually running a workflow, you can choose:
+- **Run Draft** - Test your changes before publishing
+- **Run Latest Published Version** - Use the currently active version
+
+### Reverting Draft Changes
+
+Discard all changes from your draft:
+
+1. Open the workflow
+2. Click the revert/undo button
+3. Confirm you want to discard changes
+
+Your workflow returns to the most recently published version.

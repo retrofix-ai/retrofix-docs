@@ -1,0 +1,177 @@
+---
+title: "Runs & Monitoring"
+description: "View, monitor, and debug workflow executions"
+---
+
+Monitor your workflow runs, debug issues, and replay runs with fixes.
+
+---
+
+## Overview
+
+RetroFix keeps detailed logs of every workflow run for troubleshooting and analysis.
+
+### Retention
+
+- **Logs saved for** 30 days by default
+- **Full history** - All run details preserved
+- **Accessible anytime** - Access past runs for debugging
+
+---
+
+## Viewing Runs
+
+### Inside a Workflow
+
+View runs for a specific workflow:
+
+1. Open the workflow
+2. Click **"View Runs"** in the workflow configuration
+3. See all runs for that workflow in chronological order
+
+### Global View
+
+View all runs across all workflows:
+
+1. Click the **Runs** tab on the sidebar
+2. See all workflows and their recent runs
+3. Filter and search across workflows
+
+---
+
+## Run Information
+
+Each run shows:
+
+- **Status** - Running, Success, Failed, or Cancelled
+- **Timestamp** - When the run started and ended
+- **Duration** - How long the run took to complete
+- **Trigger** - What triggered the run (manual, scheduled, event)
+- **Input data** - Data that triggered the workflow
+- **Step results** - Output from each step
+- **Errors** - Details if something went wrong
+
+### Step-by-Step Details
+
+Click on a run to see:
+
+- **Each step's input** - What data went into the step
+- **Each step's output** - What data came out
+- **Execution order** - How steps ran (parallel or sequential)
+- **Loop details** - Info for each loop iteration
+- **Test values** - Variables at that point in execution
+- **Error messages** - Detailed error information
+
+---
+
+## Run Statuses
+
+### Running
+
+The workflow is currently executing.
+
+- Can be in progress for minutes or hours
+- See live progress in some cases
+- Can be cancelled if needed
+
+### Success
+
+The workflow completed successfully.
+
+- All steps executed as expected
+- Final output is ready
+- No errors occurred
+
+### Failed
+
+The workflow encountered an error.
+
+- See the exact step that failed
+- View the error message
+- Replay with fixes
+
+### Cancelled
+
+The run was manually stopped.
+
+- By clicking the X button while running
+- Usually to stop an unexpected behavior
+- Data up to cancellation is still logged
+
+---
+
+## Debugging Failed Runs
+
+### Find the Error
+
+1. Open the failed run
+2. Look for the first step marked as failed
+3. Read the error message
+4. Check the step's input and output
+
+### Common Issues
+
+<Tabs>
+  <Tab title="Missing Data">
+    The step couldn't find expected data from previous steps.
+
+    **Check:**
+    - Is the variable name correct?
+    - Did the previous step actually return data?
+    - Are you inside a loop or conditional?
+  </Tab>
+  <Tab title="Authentication Failed">
+    The integration lost access to the connected service.
+
+    **Fix:**
+    - Go to Integrations and reconnect the service
+    - Verify credentials are still valid
+    - Check if the service requires re-authorization
+  </Tab>
+  <Tab title="API Error">
+    The service rejected the request.
+
+    **Check:**
+    - Valid API parameters?
+    - Service is online and available?
+    - Rate limits exceeded?
+  </Tab>
+</Tabs>
+
+---
+
+## Replay Functionality
+
+### What is Replay?
+
+Replay re-runs a failed (or successful) workflow with the same input data but using a different version of the workflow.
+
+This is powerful for testing fixes without waiting for the next natural trigger.
+
+### How to Replay
+
+1. Open a run you want to replay
+2. Click **"Replay"**
+3. Choose which version to use:
+   - **Draft** - Test your changes before publishing
+   - **Published version** - Use a specific published version
+4. The workflow runs with the same input data
+
+---
+
+## Cancelling Runs
+
+### Cancel a Running Workflow
+
+While a workflow is executing:
+
+1. Find the running run in the list
+2. Click the **X button** next to it
+3. The run stops immediately
+4. Already-processed data is logged
+
+<Warning>
+Cancelling doesn't undo any changes made before the cancellation point. Be careful with workflows that modify external data.
+</Warning>
+
+---

@@ -1,0 +1,126 @@
+---
+title: "Agents"
+description: "Create AI agents with access to tools and knowledge"
+---
+
+Create your own AI agents that run as steps in your workflow to handle complex automation scenarios.
+
+---
+
+## Overview
+
+Agents are AI-powered workflow steps that can make intelligent decisions and take actions based on your instructions.
+
+### How it works
+
+1. Define custom instructions for the agent
+2. Grant the agent access to tools it can use
+3. The agent uses those tools to accomplish your goals
+4. Data flows from previous steps through the agent to subsequent steps
+
+---
+
+## Agent Capabilities
+
+### Custom Instructions
+
+Provide agents with specific instructions on how to behave and what to prioritize.
+
+**Examples:**
+- "Be concise and professional in all responses"
+- "Always verify data before taking action"
+- "Prioritize security and accuracy over speed"
+
+### Tool Access
+
+Give agents access to:
+
+<Tabs>
+  <Tab title="External Integrations">
+    Any action from your connected applications (with your permission).
+
+    **Examples:**
+    - Send Slack messages
+    - Create Google Calendar events
+    - Write to Google Sheets
+    - Post to social media
+    - Send emails
+
+    <Tip>
+      Grant tool access selectively. Only provide access to actions the agent actually needs.
+    </Tip>
+  </Tab>
+  <Tab title="Web Search">
+    Built-in web search tools for real-time information gathering.
+
+    **Use cases:**
+    - Look up current information
+    - Find API documentation
+    - Research competitors
+    - Verify facts and data
+  </Tab>
+  <Tab title="Knowledge Bases">
+    Access to your connected knowledge bases for internal knowledge.
+
+    **Use cases:**
+    - Reference company policies
+    - Look up internal documentation
+    - Find answers in your wikis or databases
+    - Access customer information
+  </Tab>
+</Tabs>
+
+---
+
+## When to Use Agents
+
+### Conversational Chatbot Workflows
+
+Build interactive workflows that have multi-turn conversations with users.
+
+**Example:** Create a customer service chatbot that can:
+- Answer common questions
+- Look up customer information
+- Create support tickets
+- Provide personalized recommendations
+
+### Uncertain Logic
+
+Use agents when it's unclear what set of actions should be taken each time the workflow runs.
+
+**Example:** An email processing agent that:
+- Reads incoming emails
+- Decides on priority level
+- Routes to appropriate team
+- Takes different actions based on content
+
+### Complex Decision Making
+
+Agents can evaluate complex scenarios and make nuanced decisions.
+
+**Example:** A data validation agent that:
+- Checks data quality
+- Identifies inconsistencies
+- Researches corrections using web search
+- Updates records accordingly
+
+---
+
+## Best Practices
+
+- **Be specific with instructions** - Detailed instructions lead to better results
+- **Start simple** - Begin with basic instructions and add complexity as needed
+- **Test thoroughly** - Run test workflows to verify agent behavior
+- **Monitor outputs** - Check the run logs to see what decisions the agent made
+- **Refine over time** - Adjust instructions based on real-world performance
+- **Limit tool access** - Only grant necessary permissions for security and clarity
+
+---
+
+## Tips for Better Agent Performance
+
+1. **Use clear language** - Avoid ambiguous terms or instructions
+2. **Provide context** - Tell the agent what information matters and why
+3. **Set boundaries** - Specify what the agent should NOT do
+4. **Include examples** - Provide examples of desired behavior when possible
+5. **Leverage knowledge bases** - Upload relevant documentation for the agent to reference

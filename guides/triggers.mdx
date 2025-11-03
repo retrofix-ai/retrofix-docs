@@ -1,0 +1,90 @@
+---
+title: "Triggers"
+description: "Configure when your workflows run with RetroFix triggers"
+---
+
+Triggers are the entrypoint to every workflow. They decide when a workflow will run and optionally provide input data to use in the workflow.
+
+To configure a trigger, click on the **Trigger** card at the top of the workflow to see a panel with available options.
+
+---
+
+## Trigger Types
+
+### Manual
+
+The most basic trigger type. Workflows with manual triggers only run when the **Run Workflow** button is pressed.
+
+**Optional inputs:** You can enforce that inputs be provided whenever the workflow is triggered.
+
+**Example:** Set a manual trigger to accept a LinkedIn URL, have the workflow find the contact info for that URL, and save it to a Google Sheet.
+
+### Scheduled
+
+Scheduled triggers allow you to create workflows that run on a scheduled interval:
+- Every 30 minutes
+- Every day at 9am
+- Every Sunday
+- Custom schedules
+
+**Best for:** Data fetching workflows. For example, fetch all your calendar events for the day and prepare a summary for each meeting daily.
+
+### App Trigger
+
+Application Triggers allow you to create workflows that trigger on changes from external applications.
+
+**Examples:**
+- Run when you get a new meeting booked
+- Run when you get a new email from a specific person
+- Run when a new file gets added to a folder
+
+#### Configuration
+
+For every application you have connected, RetroFix shows you available trigger options and allows you to configure them to filter events. For example, trigger on new reactions in Slack but only from particular channels.
+
+#### Deployment Steps
+
+<Steps>
+  <Step title="Select desired trigger">
+    Choose the trigger you want (e.g., Slack → New Reaction Added)
+  </Step>
+  <Step title="Configure filtering">
+    Set filters for events (e.g., only messages in #random)
+  </Step>
+  <Step title="Deploy for Testing">
+    Click "Deploy for Testing" to begin listening for events. This lets RetroFix understand how the data will look.
+
+    <Note>
+      For many triggers, RetroFix can fetch past events for you to select. For others, you'll need to trigger an event yourself (like reacting to a Slack message) to get a test event.
+    </Note>
+  </Step>
+  <Step title="Select test event">
+    Once a test event is selected, you can use the trigger data in the rest of your workflow
+  </Step>
+  <Step title="Publish & Activate">
+    Click "Publish & Activate" to start triggering the workflow for new events
+  </Step>
+</Steps>
+
+### Webhook Trigger (Advanced)
+
+Webhook triggers function similarly to app triggers. Use this when you need a workflow trigger that RetroFix doesn't natively support.
+
+- RetroFix generates a unique URL for you
+- Put this URL into any other application to start listening for events
+- Select events the same way you would for app triggers
+
+### Mailhook Trigger
+
+For mailhook triggers, RetroFix generates a unique email address per workflow that you can set up another service to send emails to.
+
+- RetroFix listens for new emails and shows events for you to select
+- Once published and activated, any new emails to this address will trigger the workflow
+
+---
+
+## External Interfaces
+
+For **Manual Triggers** with inputs, you can deploy external interfaces so they can be triggered by others without needing to log into RetroFix.
+
+You'll see a button to deploy an external interface on the **Manual Trigger** card as soon as you add any inputs.

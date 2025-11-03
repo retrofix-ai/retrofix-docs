@@ -1,0 +1,166 @@
+---
+title: "Custom Code"
+description: "Use code steps for data transformation and API integration"
+---
+
+Write custom code in your workflows to handle complex transformations, make API calls, and integrate with services that don't have pre-built steps.
+
+---
+
+## Overview
+
+Custom code steps allow you to:
+- Process outputs from one step as inputs into another
+- Make API calls to services RetroFix doesn't natively integrate with
+- Handle complex data transformations
+- Write special API calls to integrated services
+
+---
+
+## Code Steps
+
+### Basic Code Steps
+
+Write custom code to transform data between workflow steps.
+
+**Common uses:**
+- Transform data formats (JSON, CSV, etc.)
+- Parse and manipulate text
+- Calculate values
+- Filter and aggregate data
+- Combine data from multiple sources
+
+**Example:**
+```javascript
+// Transform an array of names into a comma-separated list
+const names = previousStep.data.map(item => item.name);
+return names.join(", ");
+```
+
+### API Integration
+
+Make API calls to any service using your provided credentials.
+
+**Use cases:**
+- Call APIs for services without RetroFix integrations
+- Perform advanced API operations not available in pre-built steps
+- Build custom integrations specific to your needs
+
+**Example:**
+```javascript
+// Call a custom API endpoint
+const response = await fetch('https://api.example.com/data', {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${credentials.apiKey}`,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    name: data.userName,
+    email: data.userEmail
+  })
+});
+
+return await response.json();
+```
+
+---
+
+## Custom API Steps
+
+For applications that RetroFix integrates with, you can create custom API steps for operations that don't have pre-built actions.
+
+### Features
+
+- **Application icon** - Displays the connected application's icon
+- **Direct API access** - Make any API call the service supports
+- **Credential management** - Automatically uses your connected credentials
+- **Full flexibility** - Access any endpoint or operation
+
+### When to Use Custom API Steps
+
+- The service supports an operation but RetroFix doesn't have a pre-built step
+- You need to make multiple related API calls
+- You need to perform advanced operations with specific parameters
+- You're building a one-off integration for a specific need
+
+**Example:**
+Custom API step with Gmail to get advanced search results with specific parameters not available in the pre-built "Search Email" action.
+
+---
+
+## Using Reggie to Write Code
+
+You don't need to write code yourself! You can:
+
+1. **Ask Reggie** - Describe what you need in plain English
+2. **Reggie writes the code** - He creates the code step for you
+3. **Review and adjust** - Make any tweaks needed
+4. **Run and test** - Execute the step to verify it works
+
+**Examples:**
+- "Write code to convert this list of emails into a CSV format"
+- "Create an API call to fetch user data from our custom backend"
+- "Transform this nested JSON into a flat structure"
+
+---
+
+## Code Step Capabilities
+
+### Input Access
+
+Access data from previous steps and the trigger:
+
+```javascript
+// Access data from the trigger
+const triggerData = data.triggerInput;
+
+// Access outputs from previous steps
+const previousOutput = data.previousStep;
+
+// Combine data
+const combined = {
+  ...triggerData,
+  ...previousOutput
+};
+```
+
+### Output
+
+Return any data that can be used in subsequent steps:
+
+```javascript
+// Simple value
+return "Success!";
+
+// Object
+return { success: true, id: 123, message: "Created" };
+
+// Array
+return [{ name: "Item 1" }, { name: "Item 2" }];
+```
+
+### Error Handling
+
+Handle errors gracefully:
+
+```javascript
+try {
+  const result = await someOperation();
+  return result;
+} catch (error) {
+  // The workflow will show this error
+  throw new Error(`Failed to process: ${error.message}`);
+}
+```
+
+---
+
+## Best Practices
+
+- **Keep it simple** - Complex code is hard to maintain
+- **Add comments** - Explain what your code does
+- **Test thoroughly** - Test code steps with various inputs
+- **Use Reggie for help** - Ask Reggie to write or improve code
+- **Handle errors** - Use try/catch to gracefully handle failures
+- **Document assumptions** - Specify what data format you expect

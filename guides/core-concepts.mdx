@@ -1,0 +1,59 @@
+---
+title: "Core Concepts"
+description: "Learn the fundamental concepts of RetroFix workflows and Reggie"
+---
+
+## What is a Workflow?
+
+A workflow consists of a **trigger** and **actions**. The trigger determines when a workflow will run, and the actions define what happens with the data.
+
+### How it works
+
+The trigger can be:
+- **Manual** - triggered by clicking a button
+- **Scheduled** - triggered at specific intervals
+- **From another application** - triggered by events (e.g., new calendar event)
+- **From inbound emails** - triggered by emails to generated email addresses
+
+The data from these triggers can be passed through steps for processing and is normally output somewhere else at the end.
+
+### Example
+
+Create a workflow that triggers whenever a new email comes in, checks if it is spam using AI, and automatically archives it if so.
+
+### Organization
+
+You can add tags for each workflow in the main workflow table and filter by tags when viewing. This helps you organize and manage workflows by category, project, or type.
+
+---
+
+## Who is Reggie?
+
+Reggie is RetroFix's AI workflow agent. He allows you to interact with RetroFix using just plain English.
+
+### What Reggie can do
+
+- **Create, test, modify, and fix** your workflows automatically
+- **Available 24/7** to help you build automations
+- **Answer questions** about how to automate something
+
+### Advanced capabilities
+
+<Tabs>
+  <Tab title="Planning">
+    Reggie helps you plan out your workflows before building them. He has tools for:
+    - Searching the web for API documentation
+    - Searching internally what's available within RetroFix
+    - Helping you figure out the scope of what's possible
+  </Tab>
+  <Tab title="Tool Access">
+    Reggie can use any available action for your connected applications as a tool, so long as you give him access. This is particularly useful for Reggie to see the result of workflow steps that write data to other applications.
+
+    **Example:** If you create a workflow to send a daily email summary of your meetings, you can give Reggie access to the "Find Email" action so it can read the result of the sent email, check for formatting mistakes, and automatically fix them.
+  </Tab>
+  <Tab title="Focused Editing">
+    When talking to Reggie, you can:
+    - **@ mention** any action in a workflow by name to focus Reggie on that specific action
+    - **Shift + click** on any action in the workflow to achieve the same effect
+  </Tab>
+</Tabs>

@@ -1,0 +1,121 @@
+---
+title: "Actions"
+description: "Build workflows with RetroFix actions and integrations"
+---
+
+Actions are the primary building blocks for RetroFix workflows. They define what your workflow actually does with the data.
+
+---
+
+## Adding Actions
+
+### Quick Start
+
+To add a new action:
+
+1. Hover your cursor above or below any existing step in the workflow
+2. Click the plus button that appears
+3. Click "Add Action"
+4. Select an application from the panel (e.g., Gmail)
+5. Select from pre-built actions we support for that service
+
+#### Custom API Actions
+
+For external integrations, if there's something you want to do that's available via API but we don't have a pre-built action for, you can prompt **Reggie** to create a new step using code that will call that API with your provided credentials.
+
+### Configuring Actions
+
+To configure an action:
+- **Click** on it to see required parameters (toggle to view optional ones)
+- **Cmd/Ctrl + click** to open a detailed configuration panel with more visibility
+- View variable values when testing and action outputs
+
+---
+
+## Testing & Readiness
+
+<Tip>
+Before you can use outputs from an action in subsequent steps, you must test that step first to mark it as ready and gain access to the output data.
+</Tip>
+
+**If you don't need to test a step** (e.g., Send Slack Message), you can mark it as ready by:
+1. Clicking the small arrow next to the test button
+2. Selecting "Mark as Ready"
+
+---
+
+## Using Variables
+
+### Overview
+
+You can use outputs from the trigger or previous steps as inputs in subsequent steps.
+
+**Example:** Set up a workflow to check if incoming emails are spam. Use the "email content" variable from the trigger in an AI step for categorization.
+
+### How to Insert Variables
+
+Type `@` in any text box when configuring a step to see all available variables and select the one you want.
+
+### View Test Values
+
+Click the **"Test Values"** button at the bottom of the configuration pane to see all values being used for variables in that step.
+
+---
+
+## Types of Actions
+
+### Internal Integrations
+
+RetroFix directly integrates with premium services including:
+- **AI generation** - OpenAI, Anthropic, Google
+- **Data enrichment** - Fiber.ai (people enrichment)
+- **Document processing** - Reducto.ai
+- **Web research** - Exa.ai, Perplexity.ai
+
+Use these directly without connecting anything else. RetroFix charges credits instead of you managing billing separately.
+
+### External Integrations
+
+Connect over **2,800+** external applications including Gmail, Notion, Google Sheets, Slack, and more to create workflows that work with your existing tools.
+
+#### Connecting an Integration
+
+You have three options:
+
+<Tabs>
+  <Tab title="Ask Reggie">
+    Tell Reggie something like "Help me connect Gmail" and he'll pop up a dialog you can click to connect the application
+  </Tab>
+  <Tab title="Integrations Page">
+    1. Go to the **Integrations** page from the sidebar
+    2. Search through available integrations
+    3. Connect as many accounts as you'd like
+  </Tab>
+  <Tab title="Add from Workflow">
+    Add the desired action to the workflow. RetroFix will prompt you to connect an account before allowing you to configure the action.
+  </Tab>
+</Tabs>
+
+### Utilities
+
+RetroFix exposes utility steps for more flexibility in your workflows:
+- **Wait** - Pause execution
+- **Stop Workflow** - Terminate workflow execution
+
+---
+
+## Step Management
+
+### Disable a Step
+
+When you disable a step:
+- It stays saved in the configuration
+- It will **not** be executed during the workflow run
+- Its outputs will **not** be available to other steps
+
+### Lock a Step
+
+When you lock a step:
+- It still runs as expected
+- Neither you nor Reggie can modify it until unlocked
+- Useful for locking up core workflow logic while Reggie tweaks other things like prompts and formatting

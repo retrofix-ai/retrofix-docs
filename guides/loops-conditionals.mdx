@@ -1,0 +1,110 @@
+---
+title: "Loops & Conditionals"
+description: "Control workflow execution with loops and conditional branching"
+---
+
+Loops and conditionals give you fine-grained control over workflow execution for more complex automation scenarios.
+
+---
+
+## Loops
+
+Loops allow you to iterate over a list of data to run a set of steps for each item—similar to "for loops" in programming.
+
+### How it works
+
+1. Click on a loop to configure it
+2. Select from a dropdown of all available list variables from previous steps
+3. Repeat the set of steps for each item in the list
+
+### Parallel Execution
+
+<Tip>
+RetroFix runs the set of steps for each item in the list **in parallel** up to your concurrency limits (default: 50 for all paid plans).
+</Tip>
+
+### Using Loop Data
+
+Inside a loop, use the **"Loop Items"** variable to access individual items.
+
+**Test values:** When testing, you'll see values from the **first item** in the test outputs from the list provided.
+
+### Example
+
+Fetch a list of LinkedIn profiles from Google Sheets, and for each one:
+1. Enrich the profile with additional data
+2. Save the contact information back to Google Sheets
+
+---
+
+## Conditionals
+
+Conditionals allow you to take different paths in your workflow depending on conditions applied to data from previous steps.
+
+### Features
+
+- Create **any number of branches**
+- Use **AI-based conditions** (default) or **manual conditions**
+- Control branch execution behavior
+
+### Branch Types
+
+<Tabs>
+  <Tab title="If">
+    The first condition branch. Always evaluated first.
+  </Tab>
+  <Tab title="Else If">
+    Additional condition branches between If and Else for more granular control.
+  </Tab>
+  <Tab title="Else">
+    Runs only if every other condition was false.
+  </Tab>
+</Tabs>
+
+### Condition Modes
+
+#### AI-Based Conditions (Default)
+
+Describe the condition in plain English, and RetroFix uses AI to evaluate it at runtime.
+
+**Example:** "if the following email sounds happy: @email"
+
+**Advantages:** Natural language, flexible evaluation
+
+#### Manual Conditions
+
+Set specific conditions without AI evaluation.
+
+**Example:** "if @email is not empty"
+
+**Advantages:** Deterministic, predictable
+
+### Execution Behavior
+
+By default, all branches with successful conditions will run.
+
+**Example scenario:**
+- If branch checks "is email happy"
+- Else If branch checks "is email long"
+- Email is both happy and long → both branches run
+
+<Note>
+You can toggle per branch to run conditions **sequentially** instead. With sequential execution, only the first matching condition executes.
+</Note>
+
+### Sequential Execution
+
+When enabled on a branch:
+- Only check this condition if all previous conditions were false
+- Stops checking once a condition matches
+- Provides "if/else if/else" behavior
+
+---
+
+## Combining Loops & Conditionals
+
+You can nest loops and conditionals for complex workflows:
+
+- Put conditionals inside loops to handle different items differently
+- Use loops inside conditional branches to process matching items in batches
+- Combine with other actions for sophisticated automation logic

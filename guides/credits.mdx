@@ -1,0 +1,70 @@
+---
+title: "Credits"
+description: "Understand RetroFix's usage-based pricing system"
+---
+
+Credits are RetroFix's usage-based pricing system. Learn how they work and how to monitor your usage.
+
+---
+
+## Overview
+
+RetroFix uses a credit system for billing. Most actions are free—you only pay for workflow runs and premium features.
+
+### Key Principles
+
+- **Most steps are free** - External integrations don't cost credits
+- **Pay for execution** - You're charged based on actual workflow runs
+- **Transparent pricing** - See exact costs before configuring steps
+
+---
+
+## Monitoring Usage
+
+### Check Your Balance
+
+Visit the **Credits** page in RetroFix to see:
+- Current credit balance
+- Credit cost for different steps in RetroFix
+
+### Usage History
+
+Each workflow run will show you how many steps each action cost.
+
+## Optimizing Credit Usage
+
+### Reduce Loop Costs
+
+Loops are efficient for parallel processing, but they do cost credits.
+
+**Optimization strategies:**
+- **Batch operations** - Process multiple items per loop iteration
+- **Filter before looping** - Only loop over items you need
+- **Use conditionals** - Skip unnecessary processing with if/else branches
+
+**Example:**
+Instead of looping all 1000 users:
+- Filter to only active users (200 items)
+- Loop over 200 items = 100 credits (vs 500 credits)
+- Saves 400 credits per run
+
+### Purchase Credits
+
+1. Go to **Settings** → **Billing**
+2. Select a credit package
+3. Choose payment method
+4. Credits are added to your account immediately
+
+### Overage Handling
+
+- If you run out of credits, your workflows will give a "Not enough credits" error. You can purchase more credits in the /billing page.
+
+---
+
+## FAQ
+
+**Q: How do I estimate costs for a workflow?**
+A: Configure your workflow and check the cost estimate. Test a few runs to see actual usage.
+
+**Q: Are there discounts for high volume?**
+A: Yes, enterprise plans offer volume discounts. Contact sales for details.

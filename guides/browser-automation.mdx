@@ -1,0 +1,132 @@
+---
+title: "Browser Automation"
+description: "Automate web-based tasks with hosted browser agents"
+---
+
+Browser automation allows you to spin up a hosted browser in the cloud and have it take actions using data from previous workflow steps or send data to subsequent steps.
+
+---
+
+## What is Browser Automation?
+
+Use Browser Agents as a step in your workflow to automate web-based tasks directly. This is one of the most powerful tools in RetroFix for handling applications without native integrations.
+
+---
+
+## Use Cases
+
+### Integrate with Unsupported Applications
+
+Set up a browser workflow to take actions on applications that RetroFix doesn't have native integration for—just like you would on your own computer.
+
+**Example:** Fill out a form, navigate through a multi-step process, or interact with a custom web application.
+
+### Scrape Dynamic Data
+
+Use browser automation to scrape websites when you need the most up-to-date information that may load dynamically.
+
+**Example:** Every Sunday, fetch a list of competitor URLs from Google Sheets, spin up a browser agent for each one, scrape their pricing, compare against the previous week, and send a Slack message alert if anything changed.
+
+---
+
+## Browser Actions
+
+The browser configuration panel has a list of browser actions on the left and a preview on the right. There are 4 main action types:
+
+### Navigate
+
+Navigate to a specific URL.
+
+**Options:**
+- Basic navigation with URL input
+- Click the gear icon to control navigation timeout in case the website takes too long to load
+
+**Example:** https://www.retrofix.ai
+
+---
+
+### Act
+
+The main step to control the browser. Takes in an English instruction and supports variables (type `@` to see them).
+
+#### Two modes:
+
+<Tabs>
+  <Tab title="Action Mode">
+    AI generates the action once, then runs it deterministically with self-healing.
+
+    **Best for:** Specific, repeatable instructions
+
+    **Example:** "click the button that says Integrations"
+
+    **Advantages:**
+    - Faster execution
+    - More reliable and predictable
+    - Doesn't need to think through each action
+  </Tab>
+  <Tab title="Agent Mode">
+    Choose from multiple agents (RetroFix, OpenAI, Anthropic, Gemini). Agents handle complex instructions but think through each action.
+
+    **Best for:** Complex, uncertain, or multi-step instructions
+
+    **Example:** "Find the pricing page and extract all the pricing tiers"
+
+    **Advantages:**
+    - Handles more complex scenarios
+    - Better at adapting to page changes
+    - More flexible instruction format
+
+    **Trade-off:** Slightly slower since the agent reasons through each action
+  </Tab>
+</Tabs>
+
+---
+
+### Extract
+
+Extract structured information from a page given a schema.
+
+**Use cases:**
+- Extract pricing information from competitor sites
+- Pull product details from listings
+- Scrape structured data like tables or product specifications
+
+#### Two modes:
+
+<Tabs>
+  <Tab title="Action Mode">
+    Extracts with whatever is currently visible on the page. Does not perform additional actions.
+
+    **Best for:** When the data is already visible without interaction
+  </Tab>
+  <Tab title="Agent Mode">
+    Agent will attempt to find the information on the website however it can before extracting. May need to scroll, click, or navigate to find data.
+
+    **Best for:** When data requires navigation or interaction to find
+  </Tab>
+</Tabs>
+
+---
+
+### Wait
+
+Wait for conditions or time to pass on the browser.
+
+**Options:**
+- **Seconds** - Wait for a specific duration
+- **Network Idle** - Wait until all network requests complete
+- **DOM Loaded** - Wait until DOM is fully loaded
+- **Page Load** - Wait for full page load
+- **No Network Activity** - Wait until network activity stops
+
+**Example:** After clicking a button, wait for the page to load before extracting data.
+
+---
+
+## Best Practices
+
+- Use **Action mode** for simple, deterministic tasks
+- Use **Agent mode** for complex or variable instructions
+- Always use **Wait** appropriately after navigation or interactions
+- Test browser steps thoroughly before publishing
+- Consider timeout values for slower-loading sites
