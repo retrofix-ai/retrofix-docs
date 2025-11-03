@@ -1,6 +1,9 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
+  "modeToggle": {
+    "default": "system"
+  },
   "name": "RetroFix Documentation",
   "colors": {
     "primary": "#16A34A",
