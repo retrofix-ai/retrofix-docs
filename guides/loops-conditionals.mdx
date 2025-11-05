@@ -20,7 +20,7 @@ Loops allow you to iterate over a list of data to run a set of steps for each it
 ### Parallel Execution
 
 <Tip>
-RetroFix runs the set of steps for each item in the list **in parallel** up to your concurrency limits (default: 50 for all paid plans).
+  RetroFix runs the set of steps for each item in the list **in parallel** up to your concurrency limits (default: 20 for all paid plans).
 </Tip>
 
 ### Using Loop Data
@@ -32,6 +32,7 @@ Inside a loop, use the **"Loop Items"** variable to access individual items.
 ### Example
 
 Fetch a list of LinkedIn profiles from Google Sheets, and for each one:
+
 1. Enrich the profile with additional data
 2. Save the contact information back to Google Sheets
 
@@ -84,17 +85,19 @@ Set specific conditions without AI evaluation.
 By default, all branches with successful conditions will run.
 
 **Example scenario:**
+
 - If branch checks "is email happy"
 - Else If branch checks "is email long"
 - Email is both happy and long → both branches run
 
 <Note>
-You can toggle per branch to run conditions **sequentially** instead. With sequential execution, only the first matching condition executes.
+  You can toggle per branch to run conditions **sequentially** instead. With sequential execution, only the first matching condition executes.
 </Note>
 
 ### Sequential Execution
 
 When enabled on a branch:
+
 - Only check this condition if all previous conditions were false
 - Stops checking once a condition matches
 - Provides "if/else if/else" behavior
